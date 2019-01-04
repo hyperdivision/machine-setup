@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 if [ "$(whoami)" == "root" ]; then
   echo Run as the local user, not as root.
   exit 1
@@ -9,9 +11,12 @@ fi
 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 sudo cp etc/ssh/sshd_config /etc/ssh/sshd_config
 
+# chown usr/local
+sudo chown $(whoami):$(whoami) -R /usr/local
+
 # update apt-get and install essentials
 sudo apt-get update
-sudo apt-get -y git build-essential curl wget
+sudo apt-get -y install git build-essential curl wget
 
 # install node 10
 curl -fs https://raw.githubusercontent.com/mafintosh/node-install/master/install | sh
@@ -25,4 +30,3 @@ npm config set save false
 mkdir -p ~/.config/configstore/
 printf '{"optOut": true,"lastUpdateCheck": 0}' > ~/.config/configstore/update-notifier-npm.json
 
-sudo chown $(whoami):$(whoami) -R /usr/local
