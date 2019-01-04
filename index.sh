@@ -11,6 +11,10 @@ fi
 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 sudo cp etc/ssh/sshd_config /etc/ssh/sshd_config
 
+# login banner
+sudo rm -f /etc/motd
+sudo cp etc/profile /etc/profile
+
 # remove password for local user
 sudo usermod -p '*' "$(whoami)"
 
