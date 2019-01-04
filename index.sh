@@ -11,6 +11,9 @@ fi
 sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 sudo cp etc/ssh/sshd_config /etc/ssh/sshd_config
 
+# remove password for local user
+sudo usermod -p '*' "$(whoami)"
+
 # chown usr/local
 sudo chown $(whoami):$(whoami) -R /usr/local
 
