@@ -15,7 +15,7 @@ sudo cp etc/ssh/sshd_config /etc/ssh/sshd_config
 sudo usermod -p '*' "$(whoami)"
 
 # chown usr/local
-sudo chown $(whoami):$(whoami) -R /usr/local
+sudo chown "$(whoami)":"$(whoami)" -R /usr/local
 
 # update apt-get and install essentials
 sudo apt-get update
