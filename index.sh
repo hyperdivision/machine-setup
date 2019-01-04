@@ -13,6 +13,7 @@ sudo cp etc/ssh/sshd_config /etc/ssh/sshd_config
 
 # login banner
 sudo rm -f /etc/motd
+sudo cp etc/banner /etc/banner
 sudo cp etc/profile /etc/profile
 
 # remove password for local user
